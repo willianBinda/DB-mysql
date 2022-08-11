@@ -1,0 +1,66 @@
+
+
+show databases; 				= 	mostra todas as databases
+--------------------------------------------------------------------------------------------------------------------
+create database <nome>				= 	cria uma nova database
+--------------------------------------------------------------------------------------------------------------------
+use <nome_da_database>				= 	entra nela
+--------------------------------------------------------------------------------------------------------------------
+CREATE TABLE <`nome_da_tabela`> (`id` INT NOT NULL AUTO_INCREMENT,
+`titulo` VARCHAR(255) NOT NULL, `conteudo` TEXT NOT NULL,
+autor_id INT NOT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB;
+
+"VARCHAR =vai ser do tipo texto e no maximo 255 caracteres"
+"`text` = capacidade maior que varchar, implementar artigos"
+--------------------------------------------------------------------------------------------------------------------
+show tables; 					= 	mostra as tabelas 
+--------------------------------------------------------------------------------------------------------------------
+show columns from <nome da tabela>		= 	mostra o que tem dentro da tabela
+--------------------------------------------------------------------------------------------------------------------
+INSERT INTO <nome_da_tabela> VALUES (null,"meu primeiro post","primeiro conteudo do meu post",0);= 	se insere estes valores em ordem.
+--------------------------------------------------------------------------------------------------------------------
+select * from `post`;				= 	mostra as linhas, registros da tabela
+--------------------------------------------------------------------------------------------------------------------
+update `autores` set <nome_da_coluna>="nome desejado" where id=<numero do id>;			= 	vai alterar o nome do id tal
+--------------------------------------------------------------------------------------------------------------------
+select <nome_da_linha> from <nome_da_tabela>	= 	mostra/seleciona somente o nome da linha da tabela
+--------------------------------------------------------------------------------------------------------------------
+delete from autores				= 	deleta tudo de autores
+--------------------------------------------------------------------------------------------------------------------
+delete from <nome_da_tabela> where id=<numero do id> and nome=<nome da pessoa>			= 	deleta uma linha em especifico
+--------------------------------------------------------------------------------------------------------------------
+ select * from post order by id desc;		= 	mostra os id crescente
+--------------------------------------------------------------------------------------------------------------------
+select * from post order by titulo asc;		=	organiza por ordem alfabetica/decrescente
+--------------------------------------------------------------------------------------------------------------------
+select * from post group by autor_id		=	pega um de cada grupo
+--------------------------------------------------------------------------------------------------------------------
+select * from post where titulo="titulo teste" group by autor_id;				=	seleciona um de cada grupo que tiverem com o titulo igual 
+--------------------------------------------------------------------------------------------------------------------
+select * from post limit 2;			= 	vai mostrar somente dados itens 
+--------------------------------------------------------------------------------------------------------------------
+select * from post limit 2,5;			=	vai mostrar apartir do index 2 , 5 dados
+--------------------------------------------------------------------------------------------------------------------
+select * from post order by id desc limit 2,5;	=	mostra o mesmo de cima porém decrescente
+--------------------------------------------------------------------------------------------------------------------
+select * from post where autor_id =1 and id>4;	=	do autor_id que tiverem 1 vai ser impresso somente os que tivevrem id >1
+--------------------------------------------------------------------------------------------------------------------
+select * from post where autor_id =2 or id>=1;	=	aquele que tiver possibilidade de executar terá a preferencia
+--------------------------------------------------------------------------------------------------------------------
+select * from post where (autor_id=0 or autor_id=2) and titulo="titulo teste";			=	dos autores_id 0 e 2 so mostra os que tiverem titulo =...
+--------------------------------------------------------------------------------------------------------------------
+select * from post where conteudo like "%teste%";=	selecione do conteudo os dados que tiverem algo parecido com teste
+--------------------------------------------------------------------------------------------------------------------
+select * from post inner join autores on post.autor_id = autores.id;=selecione todos do post e junte dos autores com post.autore_id tem que ser igual ao id de autores
+--------------------------------------------------------------------------------------------------------------------
+select * from post inner join autores on post.autore_id = autores.id where post.id = 10	= vai juntar somente a que tiver o id 10 de post
+--------------------------------------------------------------------------------------------------------------------
+select * from post left join autores on post.autor_id = autores.id;	=	mostra as duas tabelas juntas de todos os dados dentro das duas mesmo que nao tiver juncao 
+--------------------------------------------------------------------------------------------------------------------
+select * from post left join autores on post.autor_id = autores.id order by post.id desc;	=	so ordena as duas tabelas
+--------------------------------------------------------------------------------------------------------------------
+ select * from post right join autores on post.autor_id = autores.id;	=	da direita mostre mesmo se nao tiver nada da parte de autores
+--------------------------------------------------------------------------------------------------------------------
+
+
+
