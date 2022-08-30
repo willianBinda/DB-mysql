@@ -1,0 +1,114 @@
+show dbs;				= 	mostra os bacos de dados
+-------------------------------------------------------------
+use					=	serve tanto para criar banco de dados quando pra alternar entre os bancos
+-------------------------------------------------------------
+use <nome do banco>			= primeiro ele procura o banco, se nao encontrar ele vai preparar a estrutura para criacao porem nao cria
+-------------------------------------------------------------
+quando der o comando a cima, vai mostrar uma mensagem de que mudou para o banco
+depois usar:
+-------------------------------------------------------------
+db.alunos.save((nome:"jorge"))		= cria o banco de dados 
+-------------------------------------------------------------
+db.dropDatabase()			= 	deleta o banco de dados porem precisa estar dentro do banco de dados que vc quer excluir
+-------------------------------------------------------------
+db.createCollection("alunos");		=	crai uma collection que é o mesmo que uma tabela
+-------------------------------------------------------------
+db.getCollectionNames()			=	mostra as todas as collections que tem dentro do danco
+-------------------------------------------------------------
+db.<nome da collection>.drop();		=	deleta a colection
+-------------------------------------------------------------
+db.<nome da collection>.save()		=	adiciona dados dentro da collection
+-------------------------------------------------------------
+db.<nome collection>.save(
+{
+nome:"will",
+idade:20,
+sexo:"M",
+cpf:909.422.424-42,
+rg:213.313.132-3,
+matriculo:"das312"
+}
+);
+-------------------------------------------------------------
+db.<nome collection>.save(
+{
+nome:"cat",
+idade:30,
+sexo:"F",
+matriculo:"aaa111"
+}
+);
+-------------------------------------------------------------
+db.<nome collection>.save(
+{
+nome:"bil",
+idade:1,
+sexo:"F",
+matriculo:"bbb222"
+curso_interesse:[
+{curso:"full stack"},
+{curso:"web desing"}
+]
+}
+);
+-------------------------------------------------------------
+OPERADORES:
+$eq	=	"="
+$gt	=	">"
+$gte	=	">="
+$lt	=	"<"
+$lte	=	"<="
+$ne	=	"!="
+-------------------------------------------------------------
+db.<nome collection>.findOne()							=	mostra o primeiro dado da collection
+-------------------------------------------------------------
+db.<nome collection>.find()							=	mostra todos os dados da ollection
+-------------------------------------------------------------
+db.<nome collection>.find().pretty()						=	mostra todos os documentos da collection porem organizados/com um visual melhor que o comando de cima
+-------------------------------------------------------------
+db.<nome collection>.find({nome:{$eq:"jose"}}).pretty()				= 	mostra a os dados que tiverem o nome iqual à "jose"
+-------------------------------------------------------------
+db.<nome collection>.find({idade:{$lt:30}}).pretty()				=	na  collection <nome collection> procure por documentos em que a idade seja menor que 30
+-------------------------------------------------------------
+db.<nome collection>.find({ sexo:{$eq:"F"}, idade:{$gt:20} }).pretty()		=	na  collection <nome collection> procure por documentos em que a o sexo seja igual a "F" and idade > 20	
+-------------------------------------------------------------
+db.<nome collection>.find({ 
+	$or:[ 
+	{nome:{$eq:"maria"}}, 							=	na  collection <nome collection> procure por documentos em que a o nome seja igual a "maria" ou nome iagual a "jose"	
+	{nome:{$eq:"jose"}} 
+	]
+})				
+-------------------------------------------------------------
+update({parametro para atualizar},{$set},{muti:true})
+-------------------------------------------------------------
+db.<nome collection>.update()	=	atualiza o documento
+-------------------------------------------------------------
+db.<nome colletion>.update({nome:"jose"},{$set:{nome:"joao"}})			=	atualiza o documento que tiver o nome jose no nome coloca joao / modifica somente o primeiro que encontrar
+-------------------------------------------------------------
+pode setar mais do que um documento
+-------------------------------------------------------------
+db.<nome collection>.update({nome:maria},{$set:{nome:"bruna",idade:24}})	=	no documento que tiver com o nome "maria" no nome atualize para bruna e na idade atualize para 24
+-------------------------------------------------------------
+db.<nome collection>.update({sexo:"F"},{$set:{sexo:"feminido"}},{multi:true})	=	vai alter todos que tiverem "F" para feminino e nao so o primeiro
+-------------------------------------------------------------
+db.<nome collection>.remove({criterio de exclusao})				=	remove um documento
+-------------------------------------------------------------
+db.<nome collection>.remove({nome:"maria"})					=	remove o documento que tiver o nome "maria"
+-------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
